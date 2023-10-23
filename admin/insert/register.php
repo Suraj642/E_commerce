@@ -1,9 +1,45 @@
-<?php
-include 'layout/linke.php';
+<!DOCTYPE html>
+<html lang="en">
 
-include 'layout/sidebar.php';
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-?>
+  <title>Pages / Register - NiceAdmin Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: NiceAdmin
+  * Updated: Sep 18 2023 with Bootstrap v5.3.2
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
   <main>
     <div class="container">
 
@@ -28,7 +64,7 @@ include 'layout/sidebar.php';
                     <p class="text-center small">Enter your personal details to create account</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate method="post" action="user/register_insert.php">
+                  <form class="row g-3 needs-validation" novalidate>
                     <div class="col-12">
                       <label for="yourName" class="form-label">Your Name</label>
                       <input type="text" name="name" class="form-control" id="yourName" required>
@@ -40,18 +76,13 @@ include 'layout/sidebar.php';
                       <input type="email" name="email" class="form-control" id="yourEmail" required>
                       <div class="invalid-feedback">Please enter a valid Email adddress!</div>
                     </div>
-                    <div class="col-12">
-                      <label for="yourEmail" class="form-label">Your PhoneNumber</label>
-                      <input type="number" name="number" class="form-control" id="yourEmail" required>
-                      <!-- <div class="invalid-feedback">Please enter a valid Email adddress!</div> -->
-                    </div>
 
                     <div class="col-12">
-                      <label for="yourUsername" class="form-label">Address</label>
+                      <label for="yourUsername" class="form-label">Username</label>
                       <div class="input-group has-validation">
-                        <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
-                        <input type="text" name="address" class="form-control"  required>
-                        <!-- <div class="invalid-feedback">Please choose a username.</div> -->
+                        <span class="input-group-text" id="inputGroupPrepend">@</span>
+                        <input type="text" name="username" class="form-control" id="yourUsername" required>
+                        <div class="invalid-feedback">Please choose a username.</div>
                       </div>
                     </div>
 
@@ -69,7 +100,7 @@ include 'layout/sidebar.php';
                       </div>
                     </div>
                     <div class="col-12">
-                      <button class="btn btn-primary w-100" name="submit" type="submit">Create Account</button>
+                      <button class="btn btn-primary w-100" type="submit">Create Account</button>
                     </div>
                     <div class="col-12">
                       <p class="small mb-0">Already have an account? <a href="pages-login.html">Log in</a></p>

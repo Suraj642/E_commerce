@@ -5,7 +5,7 @@ include '../layout/sidebar.php';
 include '../db/db.php';
 if(isset($_GET['id'])){
 $id=$_GET['id'];
-$data="SELECT*FROM user where id='$id'";
+$data="SELECT*FROM category where id='$id'";
 $result=mysqli_query($con,$data);
 $row=mysqli_fetch_assoc($result);
 }
@@ -31,8 +31,8 @@ $row=mysqli_fetch_assoc($result);
                 <div class="card-body">
 
                   <div class="pt-4 pb-2">
-                    <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
-                    <p class="text-center small">Enter your personal details to create account</p>
+                    <h5 class="card-title text-center pb-0 fs-4">Create Category</h5>
+                    <p class="text-center small">Enter your category details </p>
                   </div>
                    <?php
                    if(!isset($_GET['id'])){
@@ -45,32 +45,6 @@ $row=mysqli_fetch_assoc($result);
                     </div>
 
                     <div class="col-12">
-                      <label for="yourEmail" class="form-label">Your Email</label>
-                      <input type="email" name="email" class="form-control" id="yourEmail" required>
-                      <div class="invalid-feedback">Please enter a valid Email adddress!</div>
-                    </div>
-                    <div class="col-12">
-                      <label for="yourEmail" class="form-label">Your PhoneNumber</label>
-                      <input type="number" name="number" class="form-control" id="yourEmail" required>
-                      <!-- <div class="invalid-feedback">Please enter a valid Email adddress!</div> -->
-                    </div>
-
-                    <div class="col-12">
-                      <label for="yourUsername" class="form-label">Address</label>
-                      <div class="input-group has-validation">
-                        <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
-                        <input type="text" name="address" class="form-control"  required>
-                        <!-- <div class="invalid-feedback">Please choose a username.</div> -->
-                      </div>
-                    </div>
-
-                    <div class="col-12">
-                      <label for="yourPassword" class="form-label">Password</label>
-                      <input type="password" name="password" class="form-control" id="yourPassword" required>
-                      <div class="invalid-feedback">Please enter your password!</div>
-                    </div>
-
-                    <div class="col-12">
                       <div class="form-check">
                         <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
                         <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
@@ -78,10 +52,10 @@ $row=mysqli_fetch_assoc($result);
                       </div>
                     </div>
                     <div class="col-12">
-                      <button class="btn btn-primary w-100" name="submit" type="submit">Create Account</button>
+                      <button class="btn btn-primary w-100" name="category" type="submit">Create Category</button>
                     </div>
                     <div class="col-12">
-                      <p class="small mb-0">Already have an account? <a href="pages-login.html">Log in</a></p>
+                      <p class="small mb-0">Chack Category Name <a href="#">Back</a></p>
                     </div>
                   </form>
                   <?php
@@ -96,32 +70,6 @@ $row=mysqli_fetch_assoc($result);
                     </div>
 
                     <div class="col-12">
-                      <label for="yourEmail" class="form-label">Your Email</label>
-                      <input type="email" name="email" class="form-control" id="yourEmail" value="<?php echo $row['email'];?>" required>
-                      <div class="invalid-feedback">Please enter a valid Email adddress!</div>
-                    </div>
-                    <div class="col-12">
-                      <label for="yourEmail" class="form-label">Your PhoneNumber</label>
-                      <input type="number" name="number" class="form-control" id="yourPhone" value="<?php echo $row['number'];?>" required>
-                      <!-- <div class="invalid-feedback">Please enter a valid Email adddress!</div> -->
-                    </div>
-
-                    <div class="col-12">
-                      <label for="yourUsername" class="form-label">Address</label>
-                      <div class="input-group has-validation">
-                        <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
-                        <input type="text" name="address" class="form-control" value="<?php echo $row['address'];?>"  required>
-                        <!-- <div class="invalid-feedback">Please choose a username.</div> -->
-                      </div>
-                    </div>
-
-                    <!-- <div class="col-12">
-                      <label for="yourPassword" class="form-label">Password</label>
-                      <input type="password" name="password" class="form-control" id="yourPassword" required>
-                      <div class="invalid-feedback">Please enter your password!</div>
-                    </div> -->
-
-                    <div class="col-12">
                       <div class="form-check">
                         <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
                         <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
@@ -129,10 +77,10 @@ $row=mysqli_fetch_assoc($result);
                       </div>
                     </div>
                     <div class="col-12">
-                      <button class="btn btn-primary w-100" name="user_update" type="submit">Update Account</button>
+                      <button class="btn btn-primary w-100" name="category_update" type="submit">Update Category</button>
                     </div>
                     <div class="col-12">
-                      <p class="small mb-0">Back to  account? <a href="user_table.php">Back</a></p>
+                      <p class="small mb-0">Back to  account? <a href="http://localhost/E_commerce_core_php/admin/category/category_table.php">Back</a></p>
                     </div>
                   </form>
             <?php
@@ -162,17 +110,17 @@ $row=mysqli_fetch_assoc($result);
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="../assets/vendor/apexcharts/apexcharts.min.js"></script>
-  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/vendor/chart.js/chart.umd.js"></script>
-  <script src="../assets/vendor/echarts/echarts.min.js"></script>
-  <script src="../assets/vendor/quill/quill.min.js"></script>
-  <script src="../assets/vendor/simple-datatables/simple-datatables.js"></script>
-  <script src="../assets/vendor/tinymce/tinymce.min.js"></script>
-  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.min.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
-  <script src="../assets/js/main.js"></script>
+  <script src="assets/js/main.js"></script>
 
 </body>
 

@@ -4,7 +4,7 @@
 <ul class="sidebar-nav" id="sidebar-nav">
 
   <li class="nav-item">
-    <a class="nav-link " href="index.php">
+    <a class="nav-link " href="http://localhost/E_commerce_core_php/admin/index.php">
       <i class="bi bi-grid"></i>
       <span>Dashboard</span>
     </a>
@@ -12,77 +12,17 @@
 
   <li class="nav-item">
     <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-      <i class="bi bi-menu-button-wide"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
+      <i class="bi bi-menu-button-wide"></i><span>User mangen</span><i class="bi bi-chevron-down ms-auto"></i>
     </a>
     <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
       <li>
-        <a href="components-alerts.php">
-          <i class="bi bi-circle"></i><span>Alerts</span>
+        <a href="http://localhost/E_commerce_core_php/admin/user/register.php">
+          <i class="bi bi-circle"></i><span>User Registration</span>
         </a>
       </li>
       <li>
-        <a href="components-accordion.php">
-          <i class="bi bi-circle"></i><span>Accordion</span>
-        </a>
-      </li>
-      <li>
-        <a href="components-badges.php">
-          <i class="bi bi-circle"></i><span>Badges</span>
-        </a>
-      </li>
-      <li>
-        <a href="components-breadcrumbs.php">
-          <i class="bi bi-circle"></i><span>Breadcrumbs</span>
-        </a>
-      </li>
-      <li>
-        <a href="components-buttons.php">
-          <i class="bi bi-circle"></i><span>Buttons</span>
-        </a>
-      </li>
-      <li>
-        <a href="components-cards.php">
-          <i class="bi bi-circle"></i><span>Cards</span>
-        </a>
-      </li>
-      <li>
-        <a href="components-carousel.php">
-          <i class="bi bi-circle"></i><span>Carousel</span>
-        </a>
-      </li>
-      <li>
-        <a href="components-list-group.php">
-          <i class="bi bi-circle"></i><span>List group</span>
-        </a>
-      </li>
-      <li>
-        <a href="components-modal.php">
-          <i class="bi bi-circle"></i><span>Modal</span>
-        </a>
-      </li>
-      <li>
-        <a href="components-tabs.php">
-          <i class="bi bi-circle"></i><span>Tabs</span>
-        </a>
-      </li>
-      <li>
-        <a href="components-pagination.php">
-          <i class="bi bi-circle"></i><span>Pagination</span>
-        </a>
-      </li>
-      <li>
-        <a href="components-progress.php">
-          <i class="bi bi-circle"></i><span>Progress</span>
-        </a>
-      </li>
-      <li>
-        <a href="components-spinners.php">
-          <i class="bi bi-circle"></i><span>Spinners</span>
-        </a>
-      </li>
-      <li>
-        <a href="components-tooltips.php">
-          <i class="bi bi-circle"></i><span>Tooltips</span>
+        <a href="http://localhost/E_commerce_core_php/admin/user/user_table.php">
+          <i class="bi bi-circle"></i><span>User Table</span>
         </a>
       </li>
     </ul>
@@ -90,27 +30,18 @@
 
   <li class="nav-item">
     <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-      <i class="bi bi-journal-text"></i><span>Forms</span><i class="bi bi-chevron-down ms-auto"></i>
+      <i class="bi bi-journal-text"></i><span>Category Mangen</span><i class="bi bi-chevron-down ms-auto"></i>
     </a>
     <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+      
       <li>
-        <a href="forms-elements.php">
-          <i class="bi bi-circle"></i><span>Form Elements</span>
+        <a href="http://localhost/E_commerce_core_php/admin/category/category.php">
+          <i class="bi bi-circle"></i><span>Add category </span>
         </a>
       </li>
       <li>
-        <a href="forms-layouts.php">
-          <i class="bi bi-circle"></i><span>Form Layouts</span>
-        </a>
-      </li>
-      <li>
-        <a href="forms-editors.php">
-          <i class="bi bi-circle"></i><span>Form Editors</span>
-        </a>
-      </li>
-      <li>
-        <a href="forms-validation.php">
-          <i class="bi bi-circle"></i><span>Form Validation</span>
+        <a href="http://localhost/E_commerce_core_php/admin/category/category_table.php">
+          <i class="bi bi-circle"></i><span>Category Table</span>
         </a>
       </li>
     </ul>
@@ -118,17 +49,17 @@
 
   <li class="nav-item">
     <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-      <i class="bi bi-layout-text-window-reverse"></i><span>Tables</span><i class="bi bi-chevron-down ms-auto"></i>
+      <i class="bi bi-layout-text-window-reverse"></i><span>Product Mangen</span><i class="bi bi-chevron-down ms-auto"></i>
     </a>
     <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
       <li>
-        <a href="tables-general.php">
-          <i class="bi bi-circle"></i><span>General Tables</span>
+        <a href="http://localhost/E_commerce_core_php/admin/product/product_table.php">
+          <i class="bi bi-circle"></i><span>Add Product</span>
         </a>
       </li>
       <li>
-        <a href="tables-data.php">
-          <i class="bi bi-circle"></i><span>Data Tables</span>
+        <a href="http://localhost/E_commerce_core_php/admin/product/product_table.php">
+          <i class="bi bi-circle"></i><span>Product  Tables</span>
         </a>
       </li>
     </ul>

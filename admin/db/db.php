@@ -1,5 +1,9 @@
 <?php
-$con=mysqli_connect('loacalhost','root','ecommerce');
-print_r($con);
+$con=mysqli_connect('localhost','root','','ecommerce');
+
+if($con==NULL){
+
+    echo"Database is not connect ";
+}
 
 ?>
