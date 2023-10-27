@@ -22,7 +22,7 @@ if(isset($_REQUEST['submit'])){
 
 if(isset($_REQUEST['category'])){
   $name=$_REQUEST['name'];
-  $category="INSERT INTO category(name)VALUES('$name');";
+   $category="INSERT INTO category(name)VALUES('$name');";
  $category_res= mysqli_query($con, $category);
  if(!$category_res==NULL){
   echo "category is insert";

@@ -1,9 +1,16 @@
 <?php
 include 'layout/linke.php';
+include 'db.php';
+$sql="select * from product ORDER BY id DESC limit 8";
+$res=mysqli_query($con,$sql);
+$categoy="select * from category ORDER BY id DESC limit 6";
+$result=mysqli_query($con,$categoy);
 ?>
   <div class="hero_area">
    <?php include 'layout/header.php' ?>
     <!-- slider section -->
+
+   
 
     <section class="slider_section">
       <div class="slider_container">
@@ -103,6 +110,29 @@ include 'layout/linke.php';
     <!-- end slider section -->
   </div>
   <!-- end hero area -->
+  <!-- categoy -->
+  <section class="shop_section layout_padding">
+    <div class="container">
+      <h1>Category</h1>
+    <div class="row">
+      <?php
+      while($cat=mysqli_fetch_assoc($result)){
+      ?>
+       <div class="col-sm-6 col-md-4 col-lg-2">
+  <div class="card" style="width: 18rem;">
+  <!-- <img src="..." class="card-img-top" alt="..."> -->
+  <div class="card-body">
+    <h5 class="card-title"><?php echo $cat['name']?></h5>
+    <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+    <a href="#" class="btn btn-primary">See more</a>
+  </div>
+      </div>
+</div>
+<?php } ?>
+      </div>
+</div>
+</section>
+  <!-- end category -->
 
   <!-- shop section -->
 
@@ -114,20 +144,26 @@ include 'layout/linke.php';
         </h2>
       </div>
       <div class="row">
+        <?php
+        while($row=mysqli_fetch_assoc($res))
+        {
+          
+        
+        ?>
         <div class="col-sm-6 col-md-4 col-lg-3">
           <div class="box">
             <a href="">
               <div class="img-box">
-                <img src="images/p1.png" alt="">
+                <img src="../admin/product/product_image/<?php echo $row['image'];?>" alt="">
               </div>
               <div class="detail-box">
                 <h6>
-                  Ring
+                <?php echo $row['name'];?>
                 </h6>
                 <h6>
-                  Price
+               Price
                   <span>
-                    $200
+                   <?php echo $row['price'];?>
                   </span>
                 </h6>
               </div>
@@ -138,185 +174,22 @@ include 'layout/linke.php';
               </div>
             </a>
           </div>
+          <div class="btn-box" >
+                <a href="order.php?id=<?php echo $row['id']?>" class="btn1" style="border-radius: 30px;margin-left: 10px;">
+                  Buy Now
+                </a>
+                <a href="product_details.php?id=<?php echo $row['id']?>" class="btn2"style="border-radius: 30px;margin-left: 10px;">
+                  See More
+                </a>
+              </div>
+
+
         </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="images/p2.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Watch
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $300
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="images/p3.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Teddy Bear
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $110
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="images/p4.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Flower Bouquet
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $45
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="images/p5.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Teddy Bear
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $95
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="images/p6.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Flower Bouquet
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $70
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="images/p7.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Watch
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $400
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="images/p8.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Ring
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $450
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
+        
+       <?php } ?>
       </div>
       <div class="btn-box">
-        <a href="">
+        <a href="shop.php">
           View All Products
         </a>
       </div>
