@@ -1,10 +1,11 @@
 <?php
 include 'layout/linke.php';
 include 'db.php';
+
 $sql="select * from product ORDER BY id DESC limit 8";
 $res=mysqli_query($con,$sql);
-$categoy="select * from category ORDER BY id DESC limit 6";
-$result=mysqli_query($con,$categoy);
+ $categoy_index="select * from category ORDER BY id DESC limit 6";
+$result_index=mysqli_query($con,$categoy_index);
 ?>
   <div class="hero_area">
    <?php include 'layout/header.php' ?>
@@ -116,13 +117,13 @@ $result=mysqli_query($con,$categoy);
       <h1>Category</h1>
     <div class="row">
       <?php
-      while($cat=mysqli_fetch_assoc($result)){
+      while($cat_index=mysqli_fetch_assoc($result_index)){
       ?>
        <div class="col-sm-6 col-md-4 col-lg-2">
   <div class="card" style="width: 18rem;">
   <!-- <img src="..." class="card-img-top" alt="..."> -->
   <div class="card-body">
-    <h5 class="card-title"><?php echo $cat['name']?></h5>
+    <h5 class="card-title"><?php echo $cat_index['name']?></h5>
     <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
     <a href="#" class="btn btn-primary">See more</a>
   </div>

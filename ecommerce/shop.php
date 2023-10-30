@@ -1,6 +1,18 @@
 <?php
 include 'layout/linke.php';
 include 'layout/header.php';
+if(isset($_GET['id'])){
+$id=$_GET['id'];
+$pro_category="SELECT * FROM product WHERE cat_id='$id'";
+$category="SELECT * FROM category WHERE id='$id'";
+$data1=mysqli_query($con,$category);
+$cate_name=mysqli_fetch_assoc($data1);
+}else{
+  $pro_category="SELECT * FROM product ";
+}
+
+$data=mysqli_query($con,$pro_category);
+
 
 ?>
 
@@ -10,24 +22,35 @@ include 'layout/header.php';
     <div class="container">
       <div class="heading_container heading_center">
         <h2>
-          Latest Products
+          Latest <?php if(isset($_GET['id'])){
+          echo $cate_name['name'];
+          }else{
+           echo 'Product';
+          }
+          ?>
         </h2>
       </div>
       <div class="row">
+      <?php
+        while($row=mysqli_fetch_assoc($data))
+        {
+          
+        
+        ?>
         <div class="col-sm-6 col-md-4 col-lg-3">
           <div class="box">
             <a href="">
               <div class="img-box">
-                <img src="images/p1.png" alt="">
+                <img src="../admin/product/product_image/<?php echo $row['image'];?>" alt="">
               </div>
               <div class="detail-box">
                 <h6>
-                  Ring
+                <?php echo $row['name'];?>
                 </h6>
                 <h6>
-                  Price
+               Price
                   <span>
-                    $200
+                   <?php echo $row['price'];?>
                   </span>
                 </h6>
               </div>
@@ -38,182 +61,19 @@ include 'layout/header.php';
               </div>
             </a>
           </div>
+          <div class="btn-box" >
+                <a href="order.php?id=<?php echo $row['id']?>" class="btn1" style="border-radius: 30px;margin-left: 10px;">
+                  Buy Now
+                </a>
+                <a href="product_details.php?id=<?php echo $row['id']?>" class="btn2"style="border-radius: 30px;margin-left: 10px;">
+                  See More
+                </a>
+              </div>
+
+
         </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="images/p2.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Watch
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $300
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="images/p3.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Teddy Bear
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $110
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="images/p4.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Flower Bouquet
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $45
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="images/p5.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Teddy Bear
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $95
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="images/p6.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Flower Bouquet
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $70
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="images/p7.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Watch
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $400
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="images/p8.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Ring
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $450
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
+        
+       <?php } ?> 
       </div>
       <div class="btn-box">
         <a href="">

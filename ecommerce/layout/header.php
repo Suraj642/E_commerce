@@ -1,3 +1,8 @@
+<?php
+include 'db.php';
+$categoy="select * from category ORDER BY id DESC limit 6";
+$result=mysqli_query($con,$categoy);
+?>
  <!-- header section strats -->
  <header class="header_section">
       <nav class="navbar navbar-expand-lg custom_nav-container ">
@@ -20,11 +25,22 @@
                 Shop
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="shop.php">
-                Category  
-              </a>
-            </li>
+            <!-- <li class="nav-item"> -->
+              <!-- <a class="nav-link" href="shop.php"> -->
+                <!-- Category   -->
+              <!-- </a> -->
+              <div class="dropdown">
+              <button class="dropbtn"> Category </button>
+            <div class="dropdown-content">
+            <?php
+      while($cat=mysqli_fetch_assoc($result)){
+      ?>
+<a href="shop.php?id=<?php echo $cat['id'];?>"> <?php echo $cat['name']?></a>
+
+<?php }?>
+</div>
+              </div>
+            <!-- </li> -->
             <li class="nav-item">
               <a class="nav-link" href="why.php">
                 Why Us
@@ -59,3 +75,5 @@
       </nav>
     </header>
     <!-- end header section -->
+
+
