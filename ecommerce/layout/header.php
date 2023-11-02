@@ -1,6 +1,7 @@
 <?php
+session_start();
 include 'db.php';
-$categoy="select * from category ORDER BY id DESC limit 6";
+$categoy="select * from category where status='Active' ORDER BY id DESC limit 6";
 $result=mysqli_query($con,$categoy);
 ?>
  <!-- header section strats -->
@@ -56,13 +57,36 @@ $result=mysqli_query($con,$categoy);
             </li>
           </ul>
           <div class="user_option">
-            <a href="">
+          <?php if(isset($_SESSION['email'])){?>
+          <div class="dropdown">
+              <button class="dropbtn"><?php print_r($_SESSION['name']); ?></button>
+            <div class="dropdown-content">
+            
+      
+          <a href="logout.php">logout</a>
+
+
+                 </div>
+              </div>
+            
+
+              <!-- <i class="fa fa-user" aria-hidden="true"></i> -->
+             
+              
+            
+            
+
+            <?php
+            }else{?>
+             <a href="">
               <i class="fa fa-user" aria-hidden="true"></i>
               <span>
                 Login
               </span>
             </a>
-            <a href="">
+             
+           <?php } ?>
+            <a href="add_to_cart.php">
               <i class="fa fa-shopping-bag" aria-hidden="true"></i>
             </a>
             <form class="form-inline ">

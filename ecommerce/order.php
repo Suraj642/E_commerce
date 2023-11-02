@@ -2,21 +2,23 @@
 
 include 'layout/linke.php';
 include 'layout/header.php';
+if(!isset($_SESSION['email'])){
+  echo "<script>
+     window.location.href='login.php';
+     </script>";
+}
+$user_o=$_SESSION['id'];
+ $order_d="SELECT product.name,user.address,user.name as username,cart_item.qunitity,product.price FROM cart_item INNER JOIN product on cart_item.product_id=product.id INNER JOIN user on cart_item.user_id=user.id WHERE user_id='$user_o';";
+$result_o=mysqli_query($con,$order_d);
+$result=mysqli_query($con,$order_d);
+$show_o=mysqli_fetch_assoc($result_o);
+
+
+
 ?>
 <style>
-.container{
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
-@media (min-width: 1200px)
-{
-  .container{
-    max-width: 1140px;
-  }
-}
+
+
 .d-flex{
   display: flex;
   flex-direction: row;
@@ -109,7 +111,7 @@ p{
   padding: 15px 0; 
 }
 
-button{
+.button{
   width: 100%;
   margin-top: 10px;
   padding: 10px;
@@ -120,7 +122,7 @@ button{
   font-size: 15px;
   font-weight: bold;
 }
-button:hover{
+.button:hover{
   cursor: pointer;
   background: #428a7d;
 }
@@ -130,20 +132,39 @@ button:hover{
       <h2>Product Order </h2>
   </div>
 <div class="d-flex">
-  <form action="" method="">
+<div class="container">
+      <h1>Address</h1>
+    <div class="row">
+      <?php
+      // $cat_index=mysqli_fetch_assoc($result_index)
+      ?>
+       <div class="col-sm-6 col-md-4 col-lg-2">
+  <div class="card" style="width: 18rem;">
+  <!-- <img src="..." class="card-img-top" alt="..."> -->
+  <div class="card-body">
+    <h5 class="card-title"><?php echo $show_o['address']?></h5>
+    <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+    <a href="#" class="btn btn-primary">See more</a>
+  </div>
+      </div>
+</div>
+
+      </div>
+</div>
+  <!-- <form action="" method="">
     <label>
       <span class="fname">First Name <span class="required">*</span></span>
       <input type="text" name="fname">
-    </label>
-    <label>
+    </label> -->
+    <!-- <label>
       <span class="lname">Last Name <span class="required">*</span></span>
       <input type="text" name="lname">
-    </label>
-    <label>
+    </label> -->
+    <!-- <label>
       <span>Company Name (Optional)</span>
       <input type="text" name="cn">
-    </label>
-    <label>
+    </label> -->
+    <!-- <label>
       <span>Country <span class="required">*</span></span>
       <select name="selection">
         <option value="select">Select a country...</option>
@@ -397,28 +418,28 @@ button:hover{
         <option value="ZMB">Zambia</option>
         <option value="ZWE">Zimbabwe</option>
       </select>
-    </label>
-    <label>
+    </label> -->
+    <!-- <label>
       <span>Street Address <span class="required">*</span></span>
       <input type="text" name="houseadd" placeholder="House number and street name" required>
-    </label>
-    <label>
+    </label> -->
+    <!-- <label>
       <span>&nbsp;</span>
       <input type="text" name="apartment" placeholder="Apartment, suite, unit etc. (optional)">
-    </label>
-    <label>
+    </label> -->
+    <!-- <label>
       <span>Town / City <span class="required">*</span></span>
       <input type="text" name="city"> 
-    </label>
-    <label>
+    </label> -->
+    <!-- <label>
       <span>State / County <span class="required">*</span></span>
       <input type="text" name="city"> 
     </label>
     <label>
       <span>Postcode / ZIP <span class="required">*</span></span>
       <input type="text" name="city"> 
-    </label>
-    <label>
+    </label> -->
+    <!-- <label>
       <span>Phone <span class="required">*</span></span>
       <input type="tel" name="city"> 
     </label>
@@ -426,19 +447,33 @@ button:hover{
       <span>Email Address <span class="required">*</span></span>
       <input type="email" name="city"> 
     </label>
-  </form>
+  </form> -->
   <div class="Yorder">
     <table>
       <tr>
         <th colspan="2">Your order</th>
       </tr>
+
+        <?php
+        $price=0;
+        $qty=0;
+        ?>
+
+      <?php while($p_show=mysqli_fetch_assoc($result)){ 
+        
+        $price+=$p_show['price'];
+        $qty+=$p_show['qunitity'];
+        ?>
       <tr>
-        <td>Product Name x 2(Qty)</td>
-        <td>$88.00</td>
+            
+        <td>Product <?php echo $p_show['name']; ?> x <?php echo $p_show['qunitity'];?></td>
+       
+        <td>$ <?php echo $p_show['price']; ?></td>
       </tr>
+      <?php }?>
       <tr>
         <td>Subtotal</td>
-        <td>$88.00</td>
+        <td>$<?php echo $price + $qty ?></td>
       </tr>
       <tr>
         <td>Shipping</td>
@@ -446,11 +481,27 @@ button:hover{
       </tr>
     </table><br>
     <div>
-      <input type="radio" name="dbt" value="dbt" checked> Direct Bank Transfer
+    <?php
+require 'config.php';
+?>
+<form action=" res.php" method="POST">
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+     data-key="<?php echo $Publishablekey ;?>"
+     data-amount="<?php echo  $price + $qty*1000 ?>"
+     data-email="<?php print_r($_SESSION['email'])?>"
+     data-name="<?php echo $show_o['username']?>"
+     data-description="Payment for a product or service'"
+     data-image=""
+     data-currency="inr"
+
+>
+
+    </script>
+</form>
     </div>
-    <p>
+    <!-- <p>
         Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.
-    </p>
+    </p> -->
     <div>
       <input type="radio" name="dbt" value="cd"> Cash on Delivery
     </div>
@@ -459,7 +510,8 @@ button:hover{
       <img src="https://www.logolynx.com/images/logolynx/c3/c36093ca9fb6c250f74d319550acac4d.jpeg" alt="" width="50">
       </span>
     </div>
-    <button type="button">Place Order</button>
+    <button class="button">Place Order</button>
   </div><!-- Yorder -->
  </div>
 </div>
+<?php include 'layout/footer.php'?>

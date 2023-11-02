@@ -2,9 +2,9 @@
 include 'layout/linke.php';
 include 'db.php';
 
-$sql="select * from product ORDER BY id DESC limit 8";
+$sql="select * from product Where status='Active' ORDER BY id DESC limit 8 ";
 $res=mysqli_query($con,$sql);
- $categoy_index="select * from category ORDER BY id DESC limit 6";
+ $categoy_index="select * from category Where status='Active' ORDER BY id DESC limit 6";
 $result_index=mysqli_query($con,$categoy_index);
 ?>
   <div class="hero_area">

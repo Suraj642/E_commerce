@@ -195,6 +195,7 @@ $detail_p=mysqli_fetch_assoc($res);
 }
 .product-count .qty {
 	width: 60px;
+	height: 34px;
 	text-align: center;
 }
 .round-black-btn {
@@ -203,7 +204,7 @@ $detail_p=mysqli_fetch_assoc($res);
     color: #fff;
     padding: 7px 45px;
     display: inline-block;
-    margin-top: 20px;
+    margin-top: 48px;
     border: solid 2px #212529; 
     transition: all 0.5s ease-in-out 0s;
 }
@@ -373,12 +374,21 @@ $detail_p=mysqli_fetch_assoc($res);
 	        			</div> -->
 	        			<div class="product-count">
 	        				<label for="size">Quantity</label>
-	        				<form action="#" class="display-flex">
+	        				<form action="cart_c.php" method="POST"class="display-flex">
 							    <div class="qtyminus">-</div>
 							    <input type="text" name="quantity" value="1" class="qty">
+								<input type="hidden" name="pruduct" value="<?php echo $detail_p['id'] ;?>">
+								<?php
+								if(isset($_SESSION['email'])){
+								?>
+								<input type="hidden" name="user" value="<?php print_r($_SESSION['id']);?>" class="qty">
+								<?php }?>
 							    <div class="qtyplus">+</div>
+								<div>
+								<button class="round-black-btn"  type="submit" name="submit">Add to Cart</button>
+								</div>
 							</form>
-							<a href="#" class="round-black-btn">Add to Cart</a>
+							
 	        			</div>
 	        		</div>
 	        	</div>

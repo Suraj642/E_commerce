@@ -9,9 +9,21 @@ if(isset($_REQUEST['user_update'])){
   $updata="UPDATE user Set name='$name',email='$email',number='$number',address='$address', updated_at=CURRENT_TIMESTAMP WHERE id='$id'";
   $result=mysqli_query($con,$updata);
   if(!$result==NULL){
-    echo "data is updated ";
+    echo "<script>
+    
+    alert('user data is updated');
+    window.location.href='http://localhost/E_commerce_core_php/admin/user/user_table.php';
+    
+         </script> ";
+
   }else{
-    echo "data is not update";
+    
+    echo "<script>
+    
+    alert('user data is not updated');
+   
+    
+         </script> ";
   }
 }elseif(isset($_REQUEST['category_update'])){
   $id=$_POST['id'];
@@ -19,10 +31,20 @@ if(isset($_REQUEST['user_update'])){
 $updata="UPDATE category Set name='$name', updated_at=CURRENT_TIMESTAMP WHERE id='$id'";
 $result=mysqli_query($con,$updata);
 if(!$result==NULL){
- echo "category is updated ";
+  echo "<script>
+    
+  alert('category is updated');
+  window.location.href='http://localhost/E_commerce_core_php/admin/category/category_table.php';
+  
+       </script> ";
 }else{
- echo "data is not update";
-}
+  echo "<script>
+    
+  alert('category is not updated');
+  
+  
+       </script> ";
+      }
 }elseif(isset($_REQUEST['product_update'])){
   $id=$_POST['pid'];
  $name=$_POST['pname'];
@@ -45,9 +67,19 @@ if(!$result==NULL){
  }
 $result=mysqli_query($con,$updata);
 if(!$result==NULL){
- echo "data is updated ";
+  echo "<script>
+    
+  alert('Product is updated');
+  window.location.href='http://localhost/E_commerce_core_php/admin/product/product_table.php';
+  
+       </script> ";
 }else{
- echo "data is not update";
+  echo "<script>
+    
+  alert('Product data is not updated');
+
+  
+       </script> ";
 }
 }
 

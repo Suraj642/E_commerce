@@ -3,12 +3,12 @@ include 'layout/linke.php';
 include 'layout/header.php';
 if(isset($_GET['id'])){
 $id=$_GET['id'];
-$pro_category="SELECT * FROM product WHERE cat_id='$id'";
+$pro_category="SELECT * FROM product WHERE cat_id='$id' and status='Active'";
 $category="SELECT * FROM category WHERE id='$id'";
 $data1=mysqli_query($con,$category);
 $cate_name=mysqli_fetch_assoc($data1);
 }else{
-  $pro_category="SELECT * FROM product ";
+  $pro_category="SELECT * FROM product Where status='Active'";
 }
 
 $data=mysqli_query($con,$pro_category);
